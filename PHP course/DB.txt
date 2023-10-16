@@ -1,0 +1,23 @@
+CREATE DATABASE social;
+
+USE social;
+
+CREATE TABLE users(user_id VARCHAR(32), email VARCHAR(200), password VARCHAR(256), PRIMARY KEY(user_id));
+
+ALTER TABLE users ADD UNIQUE(user_id);
+
+CREATE TABLE userDetails(user_id VARCHAR(32), firstname VARCHAR(40), lastname VARCHAR(40), DOB INT(11), gender INT(1), profilePicture INT(11), PRIMARY KEY(user_id));
+
+ALTER TABLE userDetails ADD UNIQUE(user_id);
+
+CREATE TABLE friends(id INT(11) AUTO_INCREMENT, user_id VARCHAR(32), friend_id VARCHAR(32), PRIMARY KEY(id));
+
+ALTER TABLE friends ADD UNIQUE(id);
+
+CREATE TABLE messages(message_id INT(11) AUTO_INCREMENT, message_time DATETIME, message_sender_id VARCHAR(32), message_recipient_id VARCHAR(32), message_text VARCHAR(256),  PRIMARY KEY(message_id));
+
+ALTER TABLE messages ADD UNIQUE(message_id);
+
+CREATE TABLE status(status_id INT(11), user_id VARCHAR(32), status_time DATETIME, status_content VARCHAR(256), PRIMARY KEY(status_id));
+
+ALTER TABLE status ADD UNIQUE(status_id);
